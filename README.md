@@ -13,7 +13,7 @@ Download the script located at `windows/install.ps1`.
 Click the **Start menu**, search for **PowerShell**, right-click on it and
 select **Run as administrator**
 
-![Open Powershell as administrator](image-3.png)
+![Open Powershell as administrator](windows/image-3.png)
 
 Now run the script. It will automatically:
 - Install Java if not already installed
@@ -33,15 +33,15 @@ If you don't have the extension installed yet, get it from the
 
 Click on the extension icon → **three dots** → **Options**
 
-![Extension options menu](image.png)
+![Extension options menu](windows/image.png)
 
 Scroll to the bottom of the page and click **Advanced settings**
 
-![Advanced settings button](image-1.png)
+![Advanced settings button](windows/image-1.png)
 
 Change **Cloud server** to **Local server** and click **Save**
 
-![Local server setting](image-2.png)
+![Local server setting](windows/image-2.png)
 
 That's it. The extension will now use your local LanguageTool server.
 
