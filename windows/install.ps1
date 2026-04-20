@@ -98,15 +98,17 @@ Set WshShell = Nothing
     # Write without BOM so VBScript can read the file correctly
     [System.IO.File]::WriteAllText($vbsPath, $vbsContent, [System.Text.Encoding]::ASCII)
     Write-Host "Autostart file created at: $vbsPath"
+
+    # Start the server now so the user does not need to reboot
+    $ltJar = Get-ChildItem -Path $ltPath -Filter "languagetool-server.jar" | Select-Object -First 1
+    Write-Host "Starting LanguageTool server in the background..."
+    Start-Process -FilePath $javaExe `
+                  -ArgumentList "-jar `"$($ltJar.FullName)`" --port $port --allow-origin" `
+                  -WorkingDirectory $ltPath `
+                  -WindowStyle Hidden
 }
 
-# --- Start server ---
 Write-Host ""
-Write-Host "Installation complete. Starting LanguageTool server on port $port..."
-Write-Host "Open your browser and go to: http://localhost:$port/v2/check?language=en-US&text=test"
-Write-Host "LanguageTool will also start automatically on next login."
-Write-Host "Press Ctrl+C to stop the server."
-Write-Host ""
-
-$ltJar = Get-ChildItem -Path $installDir -Recurse -Filter "languagetool-server.jar" | Select-Object -First 1
-java -cp $ltJar.FullName org.languagetool.server.HTTPServer --config $propertiesPath --port $port --allow-origin
+Write-Host "Installation complete."
+Write-Host "LanguageTool is now running on port $port and will start automatically on every login."
+Write-Host "You can now configure the browser extension."

@@ -4,27 +4,31 @@ This guide explains how to install LanguageTool locally on Windows using the
 script `install.ps1`. It also covers how to install and configure the browser
 extension to use your local server.
 
-## Script
-
-Download the script located at `windows/install.ps1`.
-
-### Opening PowerShell as administrator
+## Opening PowerShell as administrator
 
 Click the **Start menu**, search for **PowerShell**, right-click on it and
 select **Run as administrator**
 
-![Open Powershell as administrator](windows/image-3.png)
+![Open PowerShell as administrator](windows/image-3.png)
 
-Now run the script. It will automatically:
+## Install
+
+Copy and run this command in the PowerShell window you just opened:
+
+```powershell
+Set-ExecutionPolicy Bypass -Scope Process -Force; iwr "https://raw.githubusercontent.com/toni-galan/language-tool-local-setup/windows-script/windows/install.ps1" | iex
+```
+
+The script will automatically:
 - Install Java if not already installed
 - Download and extract LanguageTool
-- Start the local server on port 8081
 - Configure LanguageTool to start automatically on every login
+- Start the server immediately so no reboot is needed
 
 ## Extension
 
-Once the server is running, you need to configure the LanguageTool browser
-extension to use your local server instead of the cloud.
+Once the script finishes, configure the LanguageTool browser extension to use
+your local server instead of the cloud.
 
 If you don't have the extension installed yet, get it from the
 [Chrome Web Store](https://chromewebstore.google.com/detail/corrector-ortogr%C3%A1fico-y-g/oldceeleldhonbafppcapldpdifcinji?hl=es).
@@ -45,5 +49,5 @@ Change **Cloud server** to **Local server** and click **Save**
 
 That's it. The extension will now use your local LanguageTool server.
 
-> **Note:** make sure the LanguageTool server is running before using the
-> extension. After the first reboot it will start automatically on login.
+> **Note:** LanguageTool will start automatically on every login. If it ever
+> stops working, simply log out and back in, or run the script again.
