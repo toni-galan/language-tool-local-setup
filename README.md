@@ -48,6 +48,3 @@ Change **Cloud server** to **Local server** and click **Save**
 ![Local server setting](windows/image-2.png)
 
 That's it. The extension will now use your local LanguageTool server.
-
-> **Note:** LanguageTool will start automatically on every login. If it ever
-> stops working, simply log out and back in, or run the script again.
